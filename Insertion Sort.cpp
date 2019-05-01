@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     int n;
-    printf("Data count: ")
+    printf("Data count: ");
     scanf("%d", &n);
 
     int data[1000];
@@ -15,12 +15,26 @@ int main()
         scanf("%d", &data[i]);
     }
 
-    for(int i=0;i<n;i++)
+    for(int i=1;i<n;i++)
     {
-        for(int j=i;j>0;j--)
+        int tmp=data[i];
+        int j=i-1;
+        while(tmp<data[j] && j>0)
         {
-            if(data[j]<data[j-1]) swap(data[j],data[j-1]);
+            data[j+1]=data[j];
+            j--;
         }
+        if(tmp>=data[j]) data[j+1]=tmp;
+        else
+        {
+            data[j+1]=data[j];
+            data[j]=tmp;
+        }
+
+        /*for(int j=0;j<n;j++)
+            printf("%d ", data[j]);
+        printf("\n");*/
+
     }
 
     for(int i=0;i<n;i++)
